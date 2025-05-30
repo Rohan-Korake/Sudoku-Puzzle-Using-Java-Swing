@@ -29,6 +29,9 @@ class Start_Game
     JButton button;
     Boolean Filled=false,Stopped=false,NewGame=false;
     String[] Levels={"Easy","Medium","Hard"};
+    int Filled_Row_Button[]=new int[81];
+    int Filled_Col_Button[]=new int[81];
+    int index=0;
     int EasyLevelAnswerKay[][]={
         {6,7,2,8,4,9,5,3,1},
         {8,3,1,5,7,2,6,4,9},
@@ -261,6 +264,10 @@ class Start_Game
                     {
                         Board_Boxes[i][j].setForeground(Color.black);
                     }
+                }
+                for(int rc=0;rc<index;rc++)
+                {
+                    Board_Boxes[Filled_Row_Button[rc]][Filled_Col_Button[rc]].setForeground(Color.blue);
                 }
                 Stopped=false;
                 time.start(); 
@@ -513,6 +520,9 @@ class Start_Game
                         {
                             Obj.setText(Val);
                             Obj.setForeground(Color.blue);
+                            Filled_Row_Button[index]=i;
+                            Filled_Col_Button[index]=j;
+                            index++;
                             Game_Status();
                         }
                         else
@@ -561,7 +571,7 @@ class Start_Game
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
                 Trophy,
-                    new String[]{"New Game","Exit"},"Exit");
+                new String[]{"New Game","Exit"},"Exit");
 
                 if(Decision==JOptionPane.YES_OPTION)
                 {
@@ -624,5 +634,4 @@ class Start_Game
             }
         }
     //Game status function end
-
 }
