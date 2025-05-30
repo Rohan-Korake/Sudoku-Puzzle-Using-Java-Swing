@@ -452,7 +452,7 @@ class Start_Game
             Board_Boxes[3][8].setText("7");
             Board_Boxes[5][6].setText("3");
             Board_Boxes[5][7].setText("4");
-
+            
             Board_Boxes[6][1].setText("8");
             Board_Boxes[8][2].setText("9");
 
