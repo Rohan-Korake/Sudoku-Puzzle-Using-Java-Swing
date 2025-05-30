@@ -32,6 +32,8 @@ class Start_Game
     int Filled_Row_Button[]=new int[81];
     int Filled_Col_Button[]=new int[81];
     int index=0;
+    int One,Two,Three,Four,Five,Six,Seven,Eight,Nine;
+    JButton Clicked_Obj;
     int EasyLevelAnswerKay[][]={
         {6,7,2,8,4,9,5,3,1},
         {8,3,1,5,7,2,6,4,9},
@@ -348,6 +350,16 @@ class Start_Game
             Board_Boxes[7][8].setText("5");
             Board_Boxes[8][6].setText("3");
             Board_Boxes[8][7].setText("7");
+
+            One=4;
+            Two=4;
+            Three=4;
+            Four=3;
+            Five=6;
+            Six=5;
+            Seven=4;
+            Eight=4;
+            Nine=4;
         }
     //Easy level function end
 
@@ -392,6 +404,7 @@ class Start_Game
             Board_Boxes[6][8].setText("5");
             Board_Boxes[8][7].setText("4");
             Board_Boxes[8][8].setText("1");
+
             for(int i=0;i<9;i++)
             {
                 for(int j=0;j<9;j++)
@@ -399,6 +412,16 @@ class Start_Game
                     Board_Boxes[i][j].setForeground(Color.black);
                 }
             }
+
+            One=5;
+            Two=4;
+            Three=2;
+            Four=5;
+            Five=4;
+            Six=2;
+            Seven=3;
+            Eight=1;
+            Nine=4;
         }
     //Medium level function end
 
@@ -446,14 +469,24 @@ class Start_Game
                     Board_Boxes[i][j].setForeground(Color.black);
                 }
             }
+
+            One=1;
+            Two=3;
+            Three=4;
+            Four=4;
+            Five=2;
+            Six=2;
+            Seven=4;
+            Eight=3;
+            Nine=2;
         }
     //Hard level function end
 
     //Value button actionlistener start
         ActionListener Values=e->
         {
-            JButton buttonObj=(JButton)e.getSource();
-            String SetValue=buttonObj.getText();
+            Clicked_Obj=(JButton)e.getSource();
+            String SetValue=Clicked_Obj.getText();
             if(!Filled)
             {            
                if(Selected_level.equals("Easy"))
@@ -523,6 +556,53 @@ class Start_Game
                             Filled_Row_Button[index]=i;
                             Filled_Col_Button[index]=j;
                             index++;
+                            switch (Value) 
+                            {
+                                case 1:
+                                    One++;
+                                    Check_Limit(One);
+                                break;
+                            
+                                case 2:
+                                    Two++;
+                                    Check_Limit(Two);
+                                break;
+                            
+                                case 3:
+                                    Three++;
+                                    Check_Limit(Three);
+                                break;
+                            
+                                case 4:
+                                    Four++;
+                                    Check_Limit(Four);
+                                break;
+                            
+                                case 5:
+                                    Five++;
+                                    Check_Limit(Five);
+                                break;
+                            
+                                case 6:
+                                    Six++;
+                                    Check_Limit(Six);
+                                break;
+                            
+                                case 7:
+                                    Seven++;
+                                    Check_Limit(Seven);
+                                break;
+                            
+                                case 8:
+                                    Eight++;
+                                    Check_Limit(Eight);
+                                break;
+                            
+                                case 9:
+                                    Nine++;
+                                    Check_Limit(Nine);
+                                break;
+                            }
                             Game_Status();
                         }
                         else
@@ -634,4 +714,14 @@ class Start_Game
             }
         }
     //Game status function end
+
+    //Check Limit function start
+        void Check_Limit(int Counter)
+        {
+            if(Counter==9)
+            {
+                Clicked_Obj.setEnabled(false);
+            }
+        }
+    //Check Limit function end
 }
